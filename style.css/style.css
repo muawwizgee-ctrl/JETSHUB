@@ -1,0 +1,714 @@
+
+/* =========================
+   RESET + SMOOTH SCROLL
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* =========================
+   BODY + SKY EFFECT
+========================= */
+body {
+    font-family: Arial, sans-serif;
+    background: #050b18;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* glowing sky */
+body::before {
+    content: "";
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0,170,255,0.08), transparent 60%);
+    animation: glow 12s linear infinite;
+    z-index: -1;
+}
+
+
+
+/* stars */
+body::after {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(white 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.05;
+    z-index: -2;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+.menu {
+    text-align: center;
+}
+
+.menu-row {
+    margin: px 0;
+}
+.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 5px;
+    background: #0b1730;
+    color: #00aaff;
+    
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;   /* 👈 this makes text bold */
+}
+
+.btn:hover {
+    background: #00aaff;
+    color: black;
+}
+#searchBar {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    width: 180px;
+    margin-left: 20px;
+}
+/* =========================
+   HEADER
+========================= */
+header {
+    text-align: center;
+    padding: 20px 20px 50px;
+    background: linear-gradient(rgba(0,10,30,0.7), rgba(0,10,30,0.9));
+    border-bottom: 1px solid #00aaff;
+}
+
+header h1 {
+    font-size: 3.5rem;
+    color: #00aaff;
+    text-shadow: 0 0 20px #00aaff;
+}
+
+header p {
+    max-width: 800px;
+    margin: 20px auto;
+    opacity: 0.9;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+section {
+    background: rgba(11, 23, 48, 0.85);
+    margin: 25px;
+    padding: 25px;
+    border-radius: 15px;
+    border-left: 5px solid #00aaff;
+    box-shadow: 0 0 20px rgba(0, 170, 255, 0.15);
+    transition: 0.4s ease;
+}
+
+section:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 35px rgba(0, 170, 255, 0.4);
+}
+
+section h2 {
+    color: #00aaff;
+    margin-bottom: 10px;
+}
+
+/* =========================
+   FLYING JETS
+========================= */
+
+.jet {
+    position: fixed;
+    width: 120px;
+    filter: drop-shadow(0 0 10px #00aaff);
+    z-index: 1;
+    pointer-events: auto;
+}
+
+.jet img {
+    width: 100%;
+}
+
+/* Jet 1 */
+.jet1 {
+    top: 20%;
+    animation: fly1 10s linear infinite;
+}
+
+/* Jet 2 */
+.jet2 {
+    top: 50%;
+    animation: fly2 14s linear infinite;
+}
+
+/* Jet 3 */
+.jet3 {
+    top: 70%;
+    animation: fly3 12s linear infinite;
+}
+
+/* movements */
+@keyframes fly1 {
+    0% { left: -200px; }
+    100% { left: 120%; }
+}
+
+@keyframes fly2 {
+    0% { left: -300px; }
+    100% { left: 130%; }
+}
+
+@keyframes fly3 {
+    0% { left: -250px; }
+    100% { left: 125%; }
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+    background: #000814;
+    border-top: 2px solid #00aaff;
+}
+/* AUTHOR STYLE */
+.author {
+    color: #00aaff;
+    font-size: 1.2rem;
+}
+/* HEADER */
+header { ... }
+
+/* AUTHOR */
+.author { ... }
+
+/* WORLD RECORD */
+.world-record { ... }
+
+/* SECTIONS */
+section { ... }
+/* =========================
+   MOBILE RESPONSIVE DESIGN
+========================= */
+
+@media (max-width: 768px) {
+
+    .menu {
+        flex-direction: column;
+        gap: 10px;
+}
+
+    header h1 {
+        font-size: 2.2rem;
+    }
+
+    section {
+        margin: 15px;
+        padding: 15px;
+    }
+
+    .jet {
+        width: 80px;
+    }
+}
+/* Container styling to manage layout placement */
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+/* Logo specific styling */
+.main-logo {
+    height: 60px; /* Adjust this height to fit your specific header layout */
+    width: auto;  /* Maintains the perfect 1:1 aspect ratio of your image */
+    max-width: 100%;
+    object-fit: contain;
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Subtle hover effect for interactive polish */
+.main-logo:hover {
+    transform: scale(1.03);
+}
+/* ==========================================================================
+   THE AVIATION STORE (MATCHING GRID LAYOUT)
+   ========================================================================== */
+.store-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 140px 25px 50px; /* Top padding keeps items clear of your fixed navbar */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.store-card {
+    background: rgba(11, 23, 48, 0.85); /* Matches your section background */
+    border-radius: 15px;               /* Matches your section rounded corners */
+    border-bottom: 4px solid #00aaff;  /* Matches your neon accent borders */
+    overflow: hidden;                  /* Ensures images follow rounded corners */
+    box-shadow: 0 0 20px rgba(0, 170, 255, 0.15);
+    transition: 0.4s ease;
+}
+
+.store-image-box {
+    width: 100%;
+    height: 240px;
+}
+
+.store-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Prevents store item images from stretching or squeezing */
+    display: block;
+}
+
+.store-info {
+    padding: 20px;
+    text-align: center;
+}
+
+.store-info h3 {
+    font-size: 1.1rem;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.store-info .price {
+    display: block;
+    color: #00aaff; /* Your custom neon blue theme color */
+    font-weight: bold;
+    font-size: 1.3rem;
+    text-shadow: 0 0 10px rgba(0, 170, 255, 0.5); /* Glow effect for pricing */
+}
+
+/* Hover animation that syncs perfectly with your home page sections */
+.store-card:hover {
+    transform: translateY(-8px); 
+    box-shadow: 0 0 35px rgba(0, 170, 255, 0.45); 
+}
+
+/* Mobile responsive layout adjustment */
+@media (max-width: 768px) {
+    .store-grid-container {
+        padding-top: 220px; /* Extra padding on mobile because the fixed nav stacks vertically */
+        grid-template-columns: 1fr;
+    }
+}
+/* =========================
+   RESET
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #050b18;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* =========================
+   GLOWING SKY BACKGROUND
+========================= */
+body::before {
+    content: "";
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0,170,255,0.08), transparent 60%);
+    animation: glow 12s linear infinite;
+    z-index: -2;
+}
+
+@keyframes glow {
+    0% { transform: translate(0,0); }
+    50% { transform: translate(100px, 60px); }
+    100% { transform: translate(0,0); }
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(white 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.05;
+    z-index: -3;
+}
+
+/* =========================
+   HEADINGS
+========================= */
+h1, h2 {
+    color: #00aaff;
+    margin: 15px 0;
+}
+
+/* =========================
+   GALLERY
+========================= */
+table {
+    margin: 20px auto;
+    border-spacing: 10px;
+}
+
+table img {
+    width: 120px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: 0.3s;
+    border: 2px solid #00aaff;
+}
+
+table img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(0,170,255,0.7);
+}
+
+/* =========================
+   CARD SECTIONS
+========================= */
+.jet-card {
+    width: 800px;
+    margin: 25px auto;
+    padding: 20px;
+    background: rgba(15, 25, 50, 0.9);
+    border-radius: 15px;
+    border-left: 5px solid #00aaff;
+    box-shadow: 0 0 20px rgba(0,170,255,0.15);
+    transition: 0.3s ease;
+}
+
+.jet-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 35px rgba(0,170,255,0.35);
+}
+
+/* =========================
+   TEXT INSIDE CARDS
+========================= */
+.jet-card h2 {
+    color: #00aaff;
+    margin-bottom: 10px;
+}
+
+.jet-card p {
+    color: #cfe8ff;
+    line-height: 1.6;
+    font-size: 15px;
+}
+
+/* =========================
+   OPTIONAL SMOOTH SCROLL
+========================= */
+html {
+    scroll-behavior: smooth;
+}
+/* =========================
+   MAIN COLUMN PAGE
+========================= */
+.jet-page {
+    width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+/* =========================
+   HEADINGS IN COLUMN
+========================= */
+.jet-page h2 {
+    color: #00aaff;
+    margin-top: 25px;
+    margin-bottom: 8px;
+    border-left: 4px solid #00aaff;
+    padding-left: 10px;
+}
+
+/* =========================
+   PARAGRAPHS
+========================= */
+.jet-page p {
+    color: #cfe8ff;
+    line-height: 1.7;
+    font-size: 15px;
+    margin-bottom: 10px;
+    padding-left: 12px;
+}
+
+/* =========================
+   BODY BACKGROUND (optional theme)
+========================= */
+body {
+    font-family: Arial, sans-serif;
+    background: #050b18;
+    color: white;
+    margin: 0;
+}
+
+/* glowing background */
+body::before {
+    content: "";
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0,170,255,0.08), transparent 60%);
+    animation: glow 12s linear infinite;
+    z-index: -2;
+}
+
+@keyframes glow {
+    0% { transform: translate(0,0); }
+    50% { transform: translate(100px, 60px); }
+    100% { transform: translate(0,0); }
+}
+/* =========================
+   RESET + SMOOTH SCROLL
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* =========================
+   BODY + AVIATION SKY THEME
+========================= */
+body {
+    font-family: Arial, sans-serif;
+    background: #050b18;
+    color: white;
+    overflow-x: hidden;
+    padding: 20px;
+}
+
+/* glowing sky effect */
+body::before {
+    content: "";
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0,170,255,0.08), transparent 60%);
+    animation: glow 12s linear infinite;
+    z-index: -2;
+}
+
+@keyframes glow {
+    0% { transform: translate(0,0); }
+    50% { transform: translate(100px, 60px); }
+    100% { transform: translate(0,0); }
+}
+
+/* stars */
+body::after {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(white 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.05;
+    z-index: -3;
+}
+
+/* =========================
+   HEADINGS
+========================= */
+h1 {
+    text-align: center;
+    color: #00aaff;
+    margin: 15px 0;
+    text-shadow: 0 0 10px rgba(0,170,255,0.6);
+}
+
+h2 {
+    text-align: center;
+    color: #00aaff;
+    margin: 20px 0 10px 0;
+}
+
+/* =========================
+   DESCRIPTION TITLE
+========================= */
+h1 + h2 {
+    margin-top: 30px;
+}
+
+/* =========================
+   GALLERY TABLE
+========================= */
+table {
+    margin: 20px auto;
+    border-spacing: 12px;
+}
+
+table img {
+    width: 120px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid #00aaff;
+    transition: 0.3s;
+}
+
+table img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(0,170,255,0.7);
+}
+
+/* =========================
+   SECTION BOX STYLE (YOUR CONTENT)
+========================= */
+h2 {
+    background: rgba(11, 23, 48, 0.85);
+    padding: 12px;
+    border-left: 5px solid #00aaff;
+    width: 80%;
+    margin: 20px auto 5px auto;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,170,255,0.15);
+}
+
+/* =========================
+   PARAGRAPHS
+========================= */
+p {
+    width: 80%;
+    margin: 0 auto 20px auto;
+    padding: 15px;
+    background: rgba(15, 25, 50, 0.7);
+    border-radius: 10px;
+    line-height: 1.7;
+    color: #cfe8ff;
+    box-shadow: 0 0 15px rgba(0,170,255,0.1);
+    transition: 0.3s;
+}
+
+p:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px rgba(0,170,255,0.3);
+}
+
+/* =========================
+   RESPONSIVE SMALL FIX
+========================= */
+@media (max-width: 768px) {
+    p, h2 {
+        width: 95%;
+    }
+
+    table img {
+        width: 250px;
+        height: 180px;
+    }
+}
+.jet-card {
+    width: 300px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.jet-img {
+    display: block;
+    width: 180px;
+    height: 100px;
+    object-fit: cover;
+    margin: 0 auto 10px auto;
+    border-radius: 8px;
+}
+
+.jet-card h2,
+.jet-card p {
+    display: block;
+}
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-direction: row;
+}
+
+nav a {
+    display: inline-block;
+}
+.button-box {
+    background: rgba(0, 170, 255, 0.15);
+    border: 2px solid #00aaff;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    margin: 20px auto;
+    max-width: 250px;
+    box-shadow: 0 0 20px rgba(0,170,255,0.3);
+}
+
+
+}
+table {
+    margin: 20px auto;
+}
+
+tr {
+    display: block;
+}
+
+td {
+    display: block;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+td img {
+    display: block;
+    margin: auto;
+}
+.gallery img {
+    width: 280px;
+    height: 200px;
+
+    object-fit: cover;   /* keeps image neat without stretching */
+    display: block;
+    margin: 10px auto;
+
+    border-radius: 12px;
+    border: 2px solid #00aaff;
+
+    box-shadow: 0 0 15px rgba(0,170,255,0.3);
+    transition: 0.3s;
+}
+
+.gallery img:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 25px #00aaff;
+}
+h3 {
+    color: #00aaff;
+    text-align: center;
+    text-shadow: 0 0 10px rgba(0,170,255,0.5);
+}
